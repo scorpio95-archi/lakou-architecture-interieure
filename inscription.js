@@ -9,7 +9,7 @@ const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 // ⚠️ À CONFIRMER : remplace par l'URL Vercel réelle une fois le site déployé,
 // puis ajoute-la aux Redirect URLs du projet Supabase (Authentication → URL Configuration),
 // exactement comme on l'a fait pour Urbanisme.
-const SITE_URL = 'https://architecture-interieure.vercel.app';
+const SITE_URL = 'https://lakou-architecture-interieure.vercel.app/';
 
 let currentRole = 'student';
 let schoolsList = [];
