@@ -106,7 +106,6 @@ header{
   .hero-art{ justify-content:flex-end; }
   .hero-art svg{ max-width:100%; }
 }
-
 /* ---------- DENTELLE / SÉPARATEUR ---------- */
 .scallop{
   width:100%; height:16px; display:block;
@@ -241,6 +240,60 @@ header{
 @media (min-width:900px){
   .menu-panel{ padding-top:110px; }
 }
+/* ---------- AUTH / FORMULAIRES ---------- */
+.auth-wrap{
+  max-width:440px; margin:0 auto;
+  padding:70px 32px 100px;
+}
+.auth-wrap h1{
+  font-size:2rem; font-weight:800; margin-bottom:8px; line-height:1.15;
+}
+.auth-wrap p.lead{
+  color:var(--ink-soft); font-size:1rem; margin-bottom:32px;
+}
+.form-group{ margin-bottom:18px; }
+.form-group label{
+  display:block; font-family:'Bricolage Grotesque', sans-serif;
+  font-size:0.7rem; font-weight:700; letter-spacing:0.09em; text-transform:uppercase;
+  color:var(--ink-soft); margin-bottom:7px;
+}
+.form-group input, .form-group select, .form-group textarea{
+  width:100%; padding:12px 14px;
+  border:1px solid var(--ligne); background:var(--blan);
+  font-family:'Newsreader', serif; font-size:1rem; color:var(--ink);
+}
+.form-group textarea{ min-height:90px; resize:vertical; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus{
+  outline:none; border-color:var(--acajou);
+}
+.form-hint{ font-size:0.78rem; color:var(--ink-soft); margin-top:6px; }
+.btn-primary{
+  display:inline-block; width:100%; text-align:center;
+  background:var(--ink); color:var(--plaster);
+  font-family:'Bricolage Grotesque', sans-serif; font-weight:700; font-size:0.95rem;
+  padding:14px 20px; border:none; cursor:pointer; text-decoration:none;
+  transition:background 0.2s ease;
+}
+.btn-primary:hover{ background:var(--acajou); }
+.btn-primary:disabled{ opacity:0.5; cursor:default; }
+
+.auth-switch{ margin-top:22px; text-align:center; font-size:0.92rem; color:var(--ink-soft); }
+.auth-switch a{ color:var(--acajou); }
+
+.submit-status{ margin-top:14px; font-size:0.87rem; padding:11px 13px; }
+.submit-status.ok{ background:var(--plaster-deep); color:var(--ink); border-left:2px solid var(--acajou); }
+.submit-status.err{ background:#F7E9E4; color:var(--acajou-deep); border-left:2px solid var(--acajou-deep); }
+
+.role-toggle{ display:flex; border:1px solid var(--ligne); }
+.role-btn{
+  flex:1; text-align:center; padding:12px; cursor:pointer;
+  font-family:'Bricolage Grotesque', sans-serif; font-weight:600; font-size:0.9rem; color:var(--ink-soft);
+}
+.role-btn.active{ background:var(--ink); color:var(--plaster); }
+
+.school-other{ display:none; margin-top:12px; }
+.school-other.show{ display:block; }
+
 /* ---------- FOOTER ---------- */
 footer{
   padding:36px 32px 44px;
