@@ -8,13 +8,13 @@ const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 const form = document.getElementById('loginForm');
 const btn = document.getElementById('loginBtn');
-const status = document.getElementById('loginStatus');
+const statusEl = document.getElementById('loginStatus');
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   btn.disabled = true;
   btn.textContent = 'Connexion...';
-  status.innerHTML = '';
+  statusEl.innerHTML = '';
 
   try {
     const email = document.getElementById('l-email').value;
@@ -26,7 +26,7 @@ form.addEventListener('submit', async (e) => {
     window.location.href = 'tableau-de-bord.html';
 
   } catch (err){
-    status.innerHTML = `<div class="submit-status err">Email ou mot de passe incorrect.</div>`;
+    statusEl.innerHTML = `<div class="submit-statusEl err">Email ou mot de passe incorrect.</div>`;
     btn.disabled = false;
     btn.textContent = 'Se connecter';
   }
