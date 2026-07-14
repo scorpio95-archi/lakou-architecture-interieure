@@ -109,7 +109,6 @@ header{
   .hero-art{ justify-content:flex-end; }
   .hero-art svg{ max-width:100%; }
 }
-
 /* ---------- DENTELLE / SÉPARATEUR ---------- */
 .scallop{
   width:100%; height:16px; display:block;
@@ -154,6 +153,8 @@ header{
   max-width:1100px; margin:0 auto;
 }
 .cat-card{
+  display:block;
+  text-decoration:none; color:var(--ink);
   border:1px solid var(--ligne);
   padding:32px 26px;
   background:var(--blan);
@@ -279,14 +280,6 @@ header{
   outline:none; border-color:var(--acajou);
 }
 .form-hint{ font-size:0.78rem; color:var(--ink-soft); margin-top:6px; }
-
-.btn-primary{
-  display:inline-block; width:100%; text-align:center;
-  background:var(--ink); color:var(--plaster);
-  font-family:'Bricolage Grotesque', sans-serif; font-weight:700; font-size:0.95rem;
-  padding:14px 20px; border:none; cursor:pointer; text-decoration:none;
-  transition:background 0.2s ease;
-}
 .btn-primary:hover{ background:var(--acajou); }
 .btn-primary:disabled{ opacity:0.5; cursor:default; }
 
@@ -306,6 +299,7 @@ header{
 
 .school-other{ display:none; margin-top:12px; }
 .school-other.show{ display:block; }
+
 /* ---------- TABLEAU DE BORD ---------- */
 .dash-wrap{ max-width:720px; margin:0 auto; padding:60px 32px 110px; }
 .dash-header{
