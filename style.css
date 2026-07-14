@@ -171,6 +171,76 @@ header{
   .cat-card:hover{ border-color:var(--acajou); transform:translateY(-3px); }
 }
 
+/* ---------- BURGER ---------- */
+.burger{
+  width:38px; height:38px;
+  background:none; border:1px solid var(--ligne); border-radius:0;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px;
+  cursor:pointer;
+}
+.burger span{
+  display:block; width:18px; height:1.4px; background:var(--ink);
+}
+
+/* ---------- PANNEAU DE MENU ---------- */
+.menu-overlay{
+  position:fixed; inset:0;
+  background:var(--plaster);
+  z-index:100;
+  display:flex; justify-content:center;
+  overflow-y:auto;
+  opacity:0; visibility:hidden; transform:translateY(-8px);
+  transition:opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+}
+.menu-overlay.open{
+  opacity:1; visibility:visible; transform:translateY(0);
+}
+.menu-panel{
+  width:100%; max-width:420px;
+  padding:80px 32px 60px;
+  display:flex; flex-direction:column;
+}
+.menu-close{
+  position:absolute; top:24px; right:28px;
+  width:38px; height:38px; border:1px solid var(--ligne); background:none;
+  font-size:1.4rem; line-height:1; color:var(--ink); cursor:pointer;
+}
+.menu-link{
+  display:block;
+  font-family:'Bricolage Grotesque', sans-serif;
+  font-size:1.15rem; font-weight:600; color:var(--ink);
+  text-decoration:none;
+  padding:14px 0;
+  border-bottom:1px solid var(--ligne);
+  background:none; border-left:none; border-right:none; border-top:none;
+  text-align:left; width:100%; cursor:pointer;
+}
+.menu-link:hover{ color:var(--acajou); }
+.menu-logout{ color:var(--acajou); }
+
+.menu-group{ border-bottom:1px solid var(--ligne); }
+.menu-accordion-btn{
+  width:100%; display:flex; align-items:center; justify-content:space-between;
+  font-family:'Bricolage Grotesque', sans-serif; font-size:1.15rem; font-weight:600; color:var(--ink);
+  background:none; border:none; padding:14px 0; cursor:pointer;
+}
+.menu-accordion-btn .chev{ width:18px; height:18px; transition:transform 0.2s ease; }
+.menu-accordion-btn[aria-expanded="true"] .chev{ transform:rotate(180deg); }
+.menu-accordion-body{
+  max-height:0; overflow:hidden; transition:max-height 0.25s ease;
+}
+.menu-accordion-body a{
+  display:block; font-family:'Newsreader', serif; font-size:1rem; color:var(--ink-soft);
+  text-decoration:none; padding:10px 0 10px 14px; border-left:2px solid var(--ligne);
+}
+.menu-accordion-body a:hover{ color:var(--acajou); border-color:var(--acajou); }
+
+.menu-divider{ height:1px; }
+.menu-network{ border-bottom:none; font-size:0.9rem; color:var(--ink-soft); font-weight:500; }
+
+@media (min-width:900px){
+  .menu-panel{ padding-top:110px; }
+}
 /* ---------- FOOTER ---------- */
 footer{
   padding:36px 32px 44px;
