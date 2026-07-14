@@ -1,7 +1,7 @@
 /* ============================================================
    ARCHITECTURE INTÉRIEURE — inscription.js
    ============================================================ */
-
+alert('A - script chargé');
 const SUPABASE_URL = 'https://xhrhqgpzewyfenidyaox.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhocmhxZ3B6ZXd5ZmVuaWR5YW94Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM5OTA1NDQsImV4cCI6MjA5OTU2NjU0NH0.76-Z2nXAOUKWew-bvgTBhxAeYKbfkJZErwqUHrlQE3g';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -48,6 +48,7 @@ const form = document.getElementById('signupForm');
 const btn = document.getElementById('signupBtn');
 const statusEl = document.getElementById('signupStatus');
 
+alert('B - juste avant addEventListener');
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   btn.disabled = true;
