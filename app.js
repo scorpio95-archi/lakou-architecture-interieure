@@ -50,6 +50,7 @@ async function refreshAuthState(){
   }
 }
 
+
 if (logoutBtn){
   logoutBtn.addEventListener('click', async () => {
     await sbMenu.auth.signOut();
