@@ -26,7 +26,7 @@ form.addEventListener('submit', async (e) => {
     window.location.href = 'tableau-de-bord.html';
 
   } catch (err){
-    statusEl.innerHTML = `<div class="submit-statusEl err">Email ou mot de passe incorrect.</div>`;
+    statusEl.innerHTML = `<div class="submit-status err">Email ou mot de passe incorrect.</div>`;
     btn.disabled = false;
     btn.textContent = 'Se connecter';
   }
