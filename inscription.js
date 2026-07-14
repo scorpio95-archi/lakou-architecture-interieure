@@ -6,10 +6,9 @@ const SUPABASE_URL = 'https://xhrhqgpzewyfenidyaox.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhocmhxZ3B6ZXd5ZmVuaWR5YW94Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM5OTA1NDQsImV4cCI6MjA5OTU2NjU0NH0.76-Z2nXAOUKWew-bvgTBhxAeYKbfkJZErwqUHrlQE3g';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// ⚠️ À CONFIRMER : remplace par l'URL Vercel réelle une fois le site déployé,
-// puis ajoute-la aux Redirect URLs du projet Supabase (Authentication → URL Configuration),
-// exactement comme on l'a fait pour Urbanisme.
-const SITE_URL = 'https://architecture-interieure.vercel.app';
+// URL réelle du site déployé, doit correspondre à une entrée dans
+// Authentication → URL Configuration → Redirect URLs du projet Supabase.
+const SITE_URL = 'https://lakou-architecture-interieure.vercel.app';
 
 let currentRole = 'student';
 let schoolsList = [];
@@ -91,14 +90,14 @@ form.addEventListener('submit', async (e) => {
 
       window.location.href = 'tableau-de-bord.html';
     } else {
-      statusEl.innerHTML = `<div class="submit-statusEl ok">Compte créé. Vérifie ton email pour confirmer ton inscription avant de te connecter.</div>`;
+      statusEl.innerHTML = `<div class="submit-status ok">Compte créé. Vérifie ton email pour confirmer ton inscription avant de te connecter.</div>`;
       form.reset();
       btn.disabled = false;
       btn.textContent = 'Créer mon compte';
     }
 
   } catch (err){
-    statusEl.innerHTML = `<div class="submit-statusEl err">Une erreur est survenue : ${err.message || err}</div>`;
+    statusEl.innerHTML = `<div class="submit-status err">Une erreur est survenue : ${err.message || err}</div>`;
     btn.disabled = false;
     btn.textContent = 'Créer mon compte';
   }
