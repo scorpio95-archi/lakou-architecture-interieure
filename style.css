@@ -109,6 +109,7 @@ header{
   .hero-art{ justify-content:flex-end; }
   .hero-art svg{ max-width:100%; }
 }
+
 /* ---------- DENTELLE / SÉPARATEUR ---------- */
 .scallop{
   width:100%; height:16px; display:block;
@@ -180,6 +181,18 @@ header{
   .cat-grid{ grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:28px; }
   .cat-card:hover{ border-color:var(--acajou); transform:translateY(-3px); }
 }
+
+/* ---------- BURGER ---------- */
+.burger{
+  width:38px; height:38px;
+  background:none; border:1px solid var(--ligne); border-radius:0;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px;
+  cursor:pointer;
+}
+.burger span{
+  display:block; width:18px; height:1.4px; background:var(--ink);
+}
+
 /* ---------- PANNEAU DE MENU ---------- */
 .menu-overlay{
   position:fixed; inset:0;
@@ -293,7 +306,6 @@ header{
 
 .school-other{ display:none; margin-top:12px; }
 .school-other.show{ display:block; }
-
 /* ---------- TABLEAU DE BORD ---------- */
 .dash-wrap{ max-width:720px; margin:0 auto; padding:60px 32px 110px; }
 .dash-header{
