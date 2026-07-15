@@ -5,9 +5,9 @@
    ↔ Tableau de bord/Paramètres/Déconnexion selon la session.
    ============================================================ */
 
-const SUPABASE_URL = 'https://xhrhqgpzewyfenidyaox.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhocmhxZ3B6ZXd5ZmVuaWR5YW94Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM5OTA1NDQsImV4cCI6MjA5OTU2NjU0NH0.76-Z2nXAOUKWew-bvgTBhxAeYKbfkJZErwqUHrlQE3g';
-const sbMenu = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const MENU_SUPABASE_URL = 'https://xhrhqgpzewyfenidyaox.supabase.co';
+const MENU_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhocmhxZ3B6ZXd5ZmVuaWR5YW94Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM5OTA1NDQsImV4cCI6MjA5OTU2NjU0NH0.76-Z2nXAOUKWew-bvgTBhxAeYKbfkJZErwqUHrlQE3g';
+const sbMenu = supabase.createClient(MENU_SUPABASE_URL, MENU_SUPABASE_ANON_KEY);
 
 const burgerBtn = document.getElementById('burgerBtn');
 const menuCloseBtn = document.getElementById('menuCloseBtn');
