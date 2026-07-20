@@ -1,24 +1,8 @@
 /* ============================================================
    ARCHITECTURE INTÉRIEURE — inscription.js
+   Utilise le client Supabase unique créé par supabase-client.js
+   (doit être chargé avant ce fichier).
    ============================================================ */
-
-// --- DEBUG VISIBLE SUR PAGE (temporaire, à retirer une fois réparé) ---
-// Affiche l'état d'exécution directement dans le DOM, sans passer par
-// alert()/console — visible même sans devtools, impossible à faire taire.
-(function(){
-  const d = document.createElement('div');
-  d.id = 'debugBox';
-  d.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;background:#111;color:#0f0;font:12px monospace;padding:8px;white-space:pre-wrap;';
-  d.textContent = 'DEBUG: inscription.js a démarré son exécution';
-  function mount(){ document.body.prepend(d); }
-  if (document.body) mount(); else document.addEventListener('DOMContentLoaded', mount);
-  window.__debug = (msg) => { d.textContent += '\n' + msg; };
-})();
-
-const SUPABASE_URL = 'https://xhrhqgpzewyfenidyaox.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhocmhxZ3B6ZXd5ZmVuaWR5YW94Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM5OTA1NDQsImV4cCI6MjA5OTU2NjU0NH0.76-Z2nXAOUKWew-bvgTBhxAeYKbfkJZErwqUHrlQE3g';
-const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-window.__debug('client Supabase créé');
 
 // URL réelle du site déployé, doit correspondre à une entrée dans
 // Authentication → URL Configuration → Redirect URLs du projet Supabase.
@@ -45,10 +29,8 @@ schoolSelect.addEventListener('change', () => {
 });
 
 async function loadSchools(){
-  window.__debug('loadSchools() appelée');
   const { data, error } = await sb.from('schools').select('id, name').eq('is_active', true).order('name');
-  if (error){ window.__debug('ERREUR écoles: ' + error.message); console.error('Erreur chargement écoles :', error.message); return; }
-  window.__debug(`écoles reçues: ${data ? data.length : 0}`);
+  if (error){ console.error('Erreur chargement écoles :', error.message); return; }
   if (!data) return;
   schoolsList = data;
   const autreOpt = schoolSelect.querySelector('option[value="autre"]');
@@ -64,10 +46,8 @@ loadSchools();
 const form = document.getElementById('signupForm');
 const btn = document.getElementById('signupBtn');
 const statusEl = document.getElementById('signupStatus');
-window.__debug('éléments du formulaire trouvés, attachement du listener...');
 
 form.addEventListener('submit', async (e) => {
-  window.__debug('submit détecté');
   e.preventDefault();
   btn.disabled = true;
   btn.textContent = 'Création...';
