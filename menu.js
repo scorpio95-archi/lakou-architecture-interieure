@@ -5,9 +5,8 @@
    ↔ Tableau de bord/Paramètres/Déconnexion selon la session.
    ============================================================ */
 
-const MENU_SUPABASE_URL = 'https://xhrhqgpzewyfenidyaox.supabase.co';
-const MENU_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhocmhxZ3B6ZXd5ZmVuaWR5YW94Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM5OTA1NDQsImV4cCI6MjA5OTU2NjU0NH0.76-Z2nXAOUKWew-bvgTBhxAeYKbfkJZErwqUHrlQE3g';
-const sbMenu = supabase.createClient(MENU_SUPABASE_URL, MENU_SUPABASE_ANON_KEY);
+/* Utilise le client Supabase unique créé par supabase-client.js
+   (doit être chargé avant ce fichier). */
 
 const burgerBtn = document.getElementById('burgerBtn');
 const menuCloseBtn = document.getElementById('menuCloseBtn');
@@ -40,7 +39,7 @@ if (discAccBtn){
 }
 
 async function refreshAuthState(){
-  const { data: { session } } = await sbMenu.auth.getSession();
+  const { data: { session } } = await sb.auth.getSession();
   if (session){
     authGuest.style.display = 'none';
     authUser.style.display = 'block';
@@ -53,7 +52,7 @@ async function refreshAuthState(){
 
 if (logoutBtn){
   logoutBtn.addEventListener('click', async () => {
-    await sbMenu.auth.signOut();
+    await sb.auth.signOut();
     window.location.href = 'index.html';
   });
 }
