@@ -2,6 +2,11 @@
    ARCHITECTURE INTÉRIEURE — parametres.js
    Utilise le client Supabase unique créé par supabase-client.js
    (doit être chargé avant ce fichier).
+
+   SÉCURITÉ (patch) : le rôle n'est plus modifiable depuis cette
+   page. Il est affiché en lecture seule. Pour devenir enseignant,
+   il faut passer par une demande validée par un admin (à
+   construire séparément) — jamais un update client direct.
    ============================================================ */
 
 // Bucket Storage réutilisé (même bucket que les images de la page d'accueil).
@@ -12,7 +17,6 @@ const settingsWrap = document.getElementById('settingsWrap');
 let currentUser = null;
 let currentProfile = null;
 let schoolsList = [];
-let selectedRole = 'student';
 
 async function init(){
   const { data: { session } } = await sb.auth.getSession();
@@ -34,7 +38,6 @@ async function init(){
   }
 
   currentProfile = profile;
-  selectedRole = profile.role === 'teacher' ? 'teacher' : 'student';
 
   const { data: schools } = await sb.from('schools').select('id, name').eq('is_active', true).order('name');
   schoolsList = schools || [];
@@ -45,6 +48,10 @@ async function init(){
 
 function escapeHtml(str){
   return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function roleLabel(role){
+  return role === 'teacher' ? 'Enseignant' : role === 'admin' ? 'Admin' : 'Étudiant';
 }
 
 function render(){
@@ -77,10 +84,10 @@ function render(){
 
     <form id="profileForm">
       <div class="form-group">
-        <label>Je suis</label>
-        <div class="role-toggle">
-          <div class="role-btn ${selectedRole === 'student' ? 'active' : ''}" data-role="student">Étudiant</div>
-          <div class="role-btn ${selectedRole === 'teacher' ? 'active' : ''}" data-role="teacher">Enseignant</div>
+        <label>Statut</label>
+        <div>
+          <span class="role-pill role-${p.role}">${roleLabel(p.role)}</span>
+          <p class="note" style="margin-top:8px;">Ton statut est géré par un administrateur. Pour devenir enseignant, contacte l'équipe via la page Contact.</p>
         </div>
       </div>
 
@@ -130,14 +137,6 @@ function render(){
 }
 
 function attachEvents(){
-  document.querySelectorAll('.role-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.role-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      selectedRole = btn.dataset.role;
-    });
-  });
-
   const schoolSelect = document.getElementById('p-school-select');
   const schoolOtherWrap = document.getElementById('schoolOtherWrap');
   schoolSelect.addEventListener('change', () => {
@@ -195,9 +194,10 @@ async function handleProfileSubmit(e){
     const schoolOther = schoolChoice === 'autre' ? schoolOtherInput.value.trim() : null;
     if (schoolChoice === 'autre' && !schoolOther) throw new Error("Indique le nom de ton école.");
 
+    // Pas de "role" ici volontairement : le rôle ne doit jamais être
+    // modifiable par l'utilisateur lui-même (règle de sécurité réseau).
     const { error } = await sb.from('profiles').update({
       full_name: fullName,
-      role: selectedRole,
       school_id: schoolId,
       school: schoolOther
     }).eq('id', currentUser.id);
