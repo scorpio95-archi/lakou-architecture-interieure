@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galerie — Architecture Intérieure — Lakou Archi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="crumb">
+  <a href="https://lakou-inivesite.vercel.app/">Lakou Inivesite</a>
+  <span>&rsaquo;</span>
+  <a href="https://lakou-archi-rho.vercel.app/">Lakou Archi</a>
+  <span>&rsaquo;</span>
+  <a href="index.html">Architecture Intérieure</a>
+  <span>&rsaquo;</span>
+  <span class="current">Galerie</span>
+</div>
+
+<header>
+  <a href="index.html" class="wordmark">
+    <span class="top">LAKOU</span>
+    <span class="sub">Architecture Intérieure</span>
+  </a>
+  <button class="burger" id="burgerBtn" aria-label="Ouvrir le menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="menu-overlay" id="menuOverlay">
+  <nav class="menu-panel">
+    <button class="menu-close" id="menuCloseBtn" aria-label="Fermer le menu">&times;</button>
+
+    <a href="index.html" class="menu-link" data-close>Accueil</a>
+
+    <div class="menu-group">
+      <button class="menu-accordion-btn" id="discAccBtn" aria-expanded="false">
+        Disciplines
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="menu-accordion-body" id="discAccBody">
+        <a href="galerie.html?type=residentiel" data-close>Aménagement résidentiel</a>
+        <a href="galerie.html?type=patrimoine" data-close>Patrimoine &amp; réhabilitation</a>
+        <a href="galerie.html?type=mobilier" data-close>Mobilier &amp; matériaux</a>
+      </div>
+    </div>
+
+    <a href="galerie.html" class="menu-link" data-close>Galerie</a>
+    <a href="articles.html" class="menu-link" data-close>Articles</a>
+
+    <div class="menu-divider"></div>
+
+    <div id="authGuest" class="menu-auth-block">
+      <a href="connexion.html" class="menu-link" data-close>Connexion</a>
+      <a href="inscription.html" class="menu-link" data-close>Inscription</a>
+    </div>
+
+    <div id="authUser" class="menu-auth-block" style="display:none;">
+      <a href="tableau-de-bord.html" class="menu-link" data-close>Tableau de bord</a>
+      <a href="parametres.html" class="menu-link" data-close>Paramètres</a>
+      <button type="button" class="menu-link menu-logout" id="logoutBtn">Déconnexion</button>
+    </div>
+    <div class="menu-divider"></div>
+    <a href="https://lakou-archi-rho.vercel.app/" class="menu-link menu-network">&larr; Lakou Archi</a>
+  </nav>
+</div>
+
+<section class="gallery-head">
+  <span class="eyebrow">Explorer</span>
+  <h1>Galerie</h1>
+  <p class="lead">Les travaux partagés par les étudiants et enseignants de la discipline.</p>
+
+  <div class="gallery-tabs" id="galleryTabs">
+    <button type="button" class="gtab active" data-tab="global">Galerie</button>
+    <button type="button" class="gtab" data-tab="mine" id="mineTab" style="display:none;">Mes travaux</button>
+  </div>
+
+  <div class="gallery-filters" id="galleryFilters">
+    <button type="button" class="gfilter" data-cat="all">Tous</button>
+    <button type="button" class="gfilter" data-cat="residentiel">Résidentiel</button>
+    <button type="button" class="gfilter" data-cat="patrimoine">Patrimoine</button>
+    <button type="button" class="gfilter" data-cat="mobilier">Mobilier</button>
+  </div>
+</section>
+
+<section class="gallery-grid-wrap">
+  <div class="gallery-grid" id="galleryGrid">
+    <div class="empty-state">Chargement...</div>
+  </div>
+</section>
+
+<button type="button" class="fab-add" id="fabAdd" style="display:none;" aria-label="Ajouter un projet">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+</button>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <button type="button" class="modal-close" id="modalCloseBtn" aria-label="Fermer">&times;</button>
+    <span class="eyebrow">Nouveau projet</span>
+    <h2>Partager un travail</h2>
+    <p class="modal-note">Ton projet est visible par toi seul jusqu'à validation par un enseignant ou admin.</p>
+
+    <form id="projectForm">
+      <div class="form-group">
+        <label for="pj-title">Titre</label>
+        <input type="text" id="pj-title" required>
+      </div>
+
+      <div class="form-group">
+        <label for="pj-category">Catégorie</label>
+        <select id="pj-category" required>
+          <option value="">Choisis une catégorie</option>
+          <option value="residentiel">Aménagement résidentiel</option>
+          <option value="patrimoine">Patrimoine &amp; réhabilitation</option>
+          <option value="mobilier">Mobilier &amp; matériaux</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="pj-description">Description</label>
+        <textarea id="pj-description" required placeholder="Le contexte du projet, les choix faits, les matériaux..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="pj-cover">Photo principale</label>
+        <input type="file" id="pj-cover" accept="image/*" required>
+      </div>
+
+      <button type="submit" class="btn-primary" id="projectSubmitBtn">Publier</button>
+      <div id="projectStatus"></div>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <p>Une discipline de <strong>Lakou Archi</strong>, dans le réseau Lakou Inivesite.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-client.js"></script>
+<script src="menu.js"></script>
+<script src="galerie.js"></script>
+</body>
+</html>
