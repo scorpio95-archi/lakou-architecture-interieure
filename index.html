@@ -73,36 +73,28 @@
     <p>Là où l'architecture dessine un bâtiment, cette discipline pense ce qui se passe à l'intérieur : la lumière, le mobilier, les matières, l'usage réel des pièces.</p>
   </div>
   <div class="hero-art">
-    <!-- Bannière optionnelle : décommente et colle l'URL obtenue via uploader.html -->
-     <img src="https://xhrhqgpzewyfenidyaox.supabase.co/storage/v1/object/public/architecture-interieure/1784047405113-9f4d3451f222440c844cd8c3e139a744.jpg" class="hero-banner-img" alt="">
+    <img src="https://xhrhqgpzewyfenidyaox.supabase.co/storage/v1/object/public/architecture-interieure/1784047405113-9f4d3451f222440c844cd8c3e139a744.jpg" class="hero-banner-img" alt="">
     <svg viewBox="0 0 480 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <!-- toiture pentue -->
       <path d="M40 168 L240 44 L440 168" stroke="var(--ink)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-      <!-- dentelle sous l'avant-toit -->
       <defs>
         <pattern id="fringe" width="22" height="16" patternUnits="userSpaceOnUse">
           <path d="M0 0 a11 11 0 0 0 22 0" fill="none" stroke="var(--acajou)" stroke-width="1.4"/>
         </pattern>
       </defs>
       <rect x="52" y="168" width="376" height="14" fill="url(#fringe)"/>
-      <!-- murs -->
       <line x1="70" y1="182" x2="70" y2="360" stroke="var(--ink)" stroke-width="1.8" stroke-linecap="round"/>
       <line x1="410" y1="182" x2="410" y2="360" stroke="var(--ink)" stroke-width="1.8" stroke-linecap="round"/>
-      <!-- sol -->
       <line x1="40" y1="360" x2="440" y2="360" stroke="var(--ink)" stroke-width="1.8" stroke-linecap="round"/>
-      <!-- fenêtre en arc avec vantail -->
       <path d="M195 300 V235 a45 45 0 0 1 90 0 V300 Z" stroke="var(--ink)" stroke-width="1.6" stroke-linejoin="round"/>
       <line x1="240" y1="190" x2="240" y2="300" stroke="var(--ink)" stroke-width="1.2"/>
       <line x1="195" y1="252" x2="285" y2="252" stroke="var(--ink)" stroke-width="1.2"/>
       <path d="M195 235 a45 45 0 0 1 90 0" stroke="var(--acajou)" stroke-width="1.4"/>
-      <!-- colonne tournée de véranda -->
       <line x1="120" y1="200" x2="120" y2="360" stroke="var(--ink)" stroke-width="1.6" stroke-linecap="round"/>
       <circle cx="120" cy="240" r="7" fill="none" stroke="var(--ink)" stroke-width="1.4"/>
       <circle cx="120" cy="300" r="7" fill="none" stroke="var(--ink)" stroke-width="1.4"/>
       <line x1="360" y1="200" x2="360" y2="360" stroke="var(--ink)" stroke-width="1.6" stroke-linecap="round"/>
       <circle cx="360" cy="240" r="7" fill="none" stroke="var(--ink)" stroke-width="1.4"/>
       <circle cx="360" cy="300" r="7" fill="none" stroke="var(--ink)" stroke-width="1.4"/>
-      <!-- balustrade -->
       <g stroke="var(--ink)" stroke-width="1.1">
         <line x1="150" y1="330" x2="150" y2="360"/>
         <line x1="165" y1="330" x2="165" y2="360"/>
@@ -125,6 +117,21 @@
   </defs>
   <rect width="400" height="16" fill="url(#fringe2)"/>
 </svg>
+
+<section class="stats-band" id="statsBand">
+  <div class="stat-item">
+    <div class="stat-number" id="statMembers">0</div>
+    <div class="stat-label">Membres</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number" id="statProjects">0</div>
+    <div class="stat-label">Projets archivés</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number" id="statSchools">0</div>
+    <div class="stat-label">Écoles représentées</div>
+  </div>
+</section>
 
 <section class="intro">
   <div class="intro-inner">
@@ -151,6 +158,7 @@
       </div>
       <div class="cat-title">Aménagement résidentiel</div>
       <p>Organiser l'intérieur d'un logement — circulation, zones de vie, rangements, vie quotidienne.</p>
+      <span class="cat-count" id="count-residentiel">&nbsp;</span>
     </a>
 
     <a href="galerie.html?type=patrimoine" class="cat-card">
@@ -164,6 +172,7 @@
       </div>
       <div class="cat-title">Patrimoine &amp; réhabilitation intérieure</div>
       <p>Adapter l'intérieur de bâtiments existants sans en trahir le caractère — les maisons gingerbread, entre autres.</p>
+      <span class="cat-count" id="count-patrimoine">&nbsp;</span>
     </a>
 
     <a href="galerie.html?type=mobilier" class="cat-card">
@@ -177,9 +186,19 @@
       </div>
       <div class="cat-title">Mobilier &amp; matériaux</div>
       <p>Dessiner ou choisir ce qui remplit l'espace — meubles, revêtements, textures, finitions.</p>
+      <span class="cat-count" id="count-mobilier">&nbsp;</span>
     </a>
 
   </div>
+</section>
+
+<section class="latest-projects">
+  <span class="eyebrow">Communauté</span>
+  <h2>Derniers projets partagés</h2>
+  <div class="latest-grid" id="latestGrid">
+    <div class="empty-state">Chargement...</div>
+  </div>
+  <a href="galerie.html" class="btn-text-link">Voir toute la galerie &rarr;</a>
 </section>
 
 <footer>
@@ -189,5 +208,6 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-client.js"></script>
 <script src="menu.js"></script>
+<script src="index.js"></script>
 </body>
 </html>
