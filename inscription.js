@@ -2,23 +2,19 @@
    ARCHITECTURE INTÉRIEURE — inscription.js
    Utilise le client Supabase unique créé par supabase-client.js
    (doit être chargé avant ce fichier).
+
+   SÉCURITÉ (patch) : le rôle n'est plus choisi ni écrit depuis
+   cette page. Tout nouveau compte reste "student" (valeur posée
+   par handle_new_user() côté serveur). Pour devenir enseignant,
+   il faudra passer par une demande validée par un admin (à
+   construire séparément) — jamais un choix libre à l'inscription.
    ============================================================ */
 
 // URL réelle du site déployé, doit correspondre à une entrée dans
 // Authentication → URL Configuration → Redirect URLs du projet Supabase.
 const SITE_URL = 'https://lakou-architecture-interieure.vercel.app';
 
-let currentRole = 'student';
 let schoolsList = [];
-
-const roleButtons = document.querySelectorAll('[data-role]');
-roleButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    roleButtons.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    currentRole = btn.dataset.role;
-  });
-});
 
 const schoolSelect = document.getElementById('s-school-select');
 const schoolOtherWrap = document.getElementById('schoolOtherWrap');
@@ -78,10 +74,10 @@ form.addEventListener('submit', async (e) => {
 
     if (hasSession){
       // Pas de confirmation d'email requise : on complète le profil tout de suite
-      // (la ligne existe déjà, créée par le trigger handle_new_user).
+      // (la ligne existe déjà, créée par le trigger handle_new_user, avec role='student' par défaut).
+      // Volontairement pas de champ "role" ici : jamais choisi côté client.
       const { error: profileError } = await sb.from('profiles').update({
         full_name: fullName,
-        role: currentRole,
         school_id: schoolId,
         school: schoolOther
       }).eq('id', userId);
