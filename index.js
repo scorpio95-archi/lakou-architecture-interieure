@@ -90,7 +90,7 @@ function renderLatestCard(project){
     : `<div class="gc-cover gc-cover-empty"></div>`;
 
   return `
-    <div class="gallery-card">
+    <a href="projet-detail.html?id=${project.id}" class="gallery-card gallery-card-link">
       ${coverHtml}
       <div class="gc-body">
         <div class="gc-author">
@@ -102,7 +102,7 @@ function renderLatestCard(project){
           <span class="gc-cat">${CATEGORY_LABELS[project.category] || project.category}</span>
         </div>
       </div>
-    </div>
+    </a>
   `;
 }
 
