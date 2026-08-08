@@ -56,6 +56,13 @@ async function init(){
   // Catégorie pré-sélectionnée via ?type= (liens venus de l'accueil / menu)
   const params = new URLSearchParams(window.location.search);
   const typeParam = params.get('type');
+  const tabParam = params.get('tab');
+  if (tabParam === 'mine' && session){
+    state.tab = 'mine';
+    document.querySelectorAll('.gtab').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.tab === 'mine');
+    });
+  }
   if (typeParam && CATEGORY_LABELS[typeParam]){
     state.category = typeParam;
     document.querySelectorAll('.gfilter').forEach(btn => {
