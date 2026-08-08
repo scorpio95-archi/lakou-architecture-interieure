@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À propos — Architecture Intérieure — Lakou Archi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="crumb">
+  <a href="https://lakou-inivesite.vercel.app/">Lakou Inivesite</a>
+  <span>&rsaquo;</span>
+  <a href="https://lakou-archi-rho.vercel.app/">Lakou Archi</a>
+  <span>&rsaquo;</span>
+  <a href="index.html">Architecture Intérieure</a>
+  <span>&rsaquo;</span>
+  <span class="current">À propos</span>
+</div>
+
+<header>
+  <a href="index.html" class="wordmark">
+    <span class="top">LAKOU</span>
+    <span class="sub">Architecture Intérieure</span>
+  </a>
+  <button class="burger" id="burgerBtn" aria-label="Ouvrir le menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="menu-overlay" id="menuOverlay">
+  <nav class="menu-panel">
+    <button class="menu-close" id="menuCloseBtn" aria-label="Fermer le menu">&times;</button>
+    <a href="index.html" class="menu-link" data-close>Accueil</a>
+    <div class="menu-group">
+      <button class="menu-accordion-btn" id="discAccBtn" aria-expanded="false">
+        Disciplines
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="menu-accordion-body" id="discAccBody">
+        <a href="galerie.html?type=residentiel" data-close>Aménagement résidentiel</a>
+        <a href="galerie.html?type=patrimoine" data-close>Patrimoine &amp; réhabilitation</a>
+        <a href="galerie.html?type=mobilier" data-close>Mobilier &amp; matériaux</a>
+      </div>
+    </div>
+    <a href="galerie.html" class="menu-link" data-close>Galerie</a>
+    <a href="articles.html" class="menu-link" data-close>Articles</a>
+    <a href="forum.html" class="menu-link" data-close>Forum</a>
+    <a href="contact.html" class="menu-link" data-close>Contact</a>
+    <div class="menu-divider"></div>
+    <div id="authGuest" class="menu-auth-block">
+      <a href="connexion.html" class="menu-link" data-close>Connexion</a>
+      <a href="inscription.html" class="menu-link" data-close>Inscription</a>
+    </div>
+    <div id="authUser" class="menu-auth-block" style="display:none;">
+      <a href="tableau-de-bord.html" class="menu-link" data-close>Tableau de bord</a>
+      <button type="button" class="menu-link menu-logout" id="logoutBtn">Déconnexion</button>
+    </div>
+    <div class="menu-divider"></div>
+    <a href="https://lakou-archi-rho.vercel.app/" class="menu-link menu-network">&larr; Lakou Archi</a>
+  </nav>
+</div>
+
+<section class="static-hero">
+  <span class="eyebrow">Le projet</span>
+  <h1>À propos</h1>
+  <p class="lead">Une archive vivante pour une discipline qui n'a pas encore sa place formelle dans l'enseignement haïtien.</p>
+</section>
+
+<section class="static-section">
+  <h2>Pourquoi cette archive</h2>
+  <p>L'architecture intérieure n'est pas encore une filière formalisée en Haïti. Les quelques professionnels qui la pratiquent l'ont pour la plupart étudiée à l'étranger, et le savoir circule surtout de bouche à oreille. Cette plateforme existe pour documenter ce qui se fait déjà — projets réels, réflexions, ressources — et donner à cette pratique un lieu où s'accumuler, en attendant qu'elle devienne une filière reconnue.</p>
+</section>
+
+<blockquote class="pull-quote">
+  Ce n'est pas de la décoration — c'est penser l'usage autant que la forme.
+</blockquote>
+
+<section class="static-section">
+  <h2>Comment ça marche</h2>
+  <div class="value-grid">
+
+    <div class="value-card">
+      <div class="value-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-6 7-6s7 2.1 7 6"/></svg>
+      </div>
+      <div class="value-title">Portée par la communauté</div>
+      <p>Étudiants et enseignants partagent leurs projets et articles directement — l'archive grandit avec ceux qui l'utilisent.</p>
+    </div>
+
+    <div class="value-card">
+      <div class="value-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <div class="value-title">Validée par les pairs</div>
+      <p>Chaque contribution est vérifiée par un enseignant ou un admin avant publication publique — la qualité prime sur le volume.</p>
+    </div>
+
+    <div class="value-card">
+      <div class="value-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M4 6h16M4 18h10"/></svg>
+      </div>
+      <div class="value-title">En réseau</div>
+      <p>Architecture Intérieure est une discipline du réseau Lakou Archi, lui-même une branche de Lakou Inivesite — l'archive académique haïtienne.</p>
+    </div>
+
+  </div>
+</section>
+
+<svg class="scallop" viewBox="0 0 400 16" preserveAspectRatio="none" aria-hidden="true">
+  <defs>
+    <pattern id="fringeApropos" width="20" height="16" patternUnits="userSpaceOnUse">
+      <path d="M0 0 a10 10 0 0 0 20 0" fill="none" stroke="var(--ligne)" stroke-width="1.4"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="16" fill="url(#fringeApropos)"/>
+</svg>
+
+<section class="static-section static-section-narrow">
+  <h2>Le réseau Lakou Inivesite</h2>
+  <p>Lakou Inivesite regroupe un réseau de plateformes d'archives par discipline, pensées pour les étudiants et enseignants haïtiens. Chaque discipline — génie civil, médecine, cuisine, architecture, et bien d'autres — a son propre espace, avec ses propres codes, mais partage la même intention : documenter le savoir haïtien à mesure qu'il se construit.</p>
+  <a href="https://lakou-inivesite.vercel.app/" class="btn-text-link" style="text-align:left; margin-top:8px;">Découvrir le réseau &rarr;</a>
+</section>
+
+<footer>
+  <p>Une discipline de <strong>Lakou Archi</strong>, dans le réseau Lakou Inivesite.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-client.js"></script>
+<script src="menu.js"></script>
+</body>
+</html>
