@@ -106,5 +106,37 @@ function renderLatestCard(project){
   `;
 }
 
+async function loadAdminProfile(){
+  const wrap = document.getElementById('adminCardWrap');
+  const card = document.getElementById('adminCard');
+  if (!wrap || !card) return;
+
+  const { data, error } = await sb.from('profiles')
+    .select('full_name, bio, location, avatar_url')
+    .eq('role', 'admin')
+    .order('created_at', { ascending: true })
+    .limit(1)
+    .maybeSingle();
+
+  if (error || !data || (!data.bio && !data.avatar_url)) return;
+
+  const initial = (data.full_name || '?').trim().charAt(0).toUpperCase() || '?';
+  const avatarHtml = data.avatar_url
+    ? `<img src="${escapeHtml(data.avatar_url)}" alt="">`
+    : `<span>${escapeHtml(initial)}</span>`;
+
+  card.innerHTML = `
+    <div class="admin-card-avatar">${avatarHtml}</div>
+    <div class="admin-card-body">
+      <span class="eyebrow">Responsable de la discipline</span>
+      <div class="admin-card-name">${escapeHtml(data.full_name || 'Membre')}</div>
+      ${data.location ? `<div class="admin-card-location">${escapeHtml(data.location)}</div>` : ''}
+      ${data.bio ? `<p class="admin-card-bio">${escapeHtml(data.bio)}</p>` : ''}
+    </div>
+  `;
+  wrap.style.display = 'block';
+}
+
 loadStats();
 loadLatestProjects();
+loadAdminProfile();
